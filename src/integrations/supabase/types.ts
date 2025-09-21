@@ -14,7 +14,172 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id: string
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      rss_articles: {
+        Row: {
+          ai_summary: string | null
+          ai_tags: string[] | null
+          created_at: string
+          description: string | null
+          id: string
+          is_read: boolean
+          is_saved: boolean
+          is_starred: boolean
+          published_at: string | null
+          source_id: string
+          title: string
+          url: string
+          user_id: string
+        }
+        Insert: {
+          ai_summary?: string | null
+          ai_tags?: string[] | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_read?: boolean
+          is_saved?: boolean
+          is_starred?: boolean
+          published_at?: string | null
+          source_id: string
+          title: string
+          url: string
+          user_id: string
+        }
+        Update: {
+          ai_summary?: string | null
+          ai_tags?: string[] | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_read?: boolean
+          is_saved?: boolean
+          is_starred?: boolean
+          published_at?: string | null
+          source_id?: string
+          title?: string
+          url?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "rss_articles_source_id_fkey"
+            columns: ["source_id"]
+            isOneToOne: false
+            referencedRelation: "rss_sources"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      rss_collections: {
+        Row: {
+          color: string | null
+          created_at: string
+          description: string | null
+          id: string
+          name: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          color?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          name: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          color?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          name?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      rss_sources: {
+        Row: {
+          category: string | null
+          collection_id: string
+          created_at: string
+          id: string
+          is_active: boolean
+          last_fetched: string | null
+          name: string
+          source_type: string
+          tags: string[] | null
+          updated_at: string
+          url: string
+          user_id: string
+        }
+        Insert: {
+          category?: string | null
+          collection_id: string
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          last_fetched?: string | null
+          name: string
+          source_type: string
+          tags?: string[] | null
+          updated_at?: string
+          url: string
+          user_id: string
+        }
+        Update: {
+          category?: string | null
+          collection_id?: string
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          last_fetched?: string | null
+          name?: string
+          source_type?: string
+          tags?: string[] | null
+          updated_at?: string
+          url?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "rss_sources_collection_id_fkey"
+            columns: ["collection_id"]
+            isOneToOne: false
+            referencedRelation: "rss_collections"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never

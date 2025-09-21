@@ -5,6 +5,7 @@ import { SourceTypeCard } from "@/components/SourceTypeCard";
 import { ProcessOverview } from "@/components/ProcessOverview";
 import { ToolCard } from "@/components/ToolCard";
 import { ArrowRight, BookOpen, Brain, Rss, Star } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-illustration.jpg";
 
 const Index = () => {
@@ -127,9 +128,11 @@ const Index = () => {
                   filtrer et trier l'information selon vos objectifs.
                 </p>
                 <div className="flex gap-4">
-                  <Button size="lg" variant="secondary" className="group">
-                    Commencer Maintenant
-                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <Button size="lg" variant="secondary" className="group" asChild>
+                    <Link to="/auth">
+                      Commencer Maintenant
+                      <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </Link>
                   </Button>
                   <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10">
                     <BookOpen className="mr-2 w-4 h-4" />
@@ -274,10 +277,12 @@ const Index = () => {
           <p className="text-lg text-background/80 mb-8 max-w-2xl mx-auto">
             Commencez dès maintenant avec notre plateforme et transformez votre façon de consommer l'information.
           </p>
-          <Button size="lg" variant="secondary" className="group">
-            <Rss className="mr-2 w-5 h-5" />
-            Démarrer Maintenant
-            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          <Button size="lg" variant="secondary" className="group" asChild>
+            <Link to="/auth">
+              <Rss className="mr-2 w-5 h-5" />
+              Démarrer Maintenant
+              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </Button>
         </div>
       </section>
