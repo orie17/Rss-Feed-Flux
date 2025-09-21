@@ -2,41 +2,74 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Content Curation Platform Design System */
 
 @layer base {
   :root {
+    /* Core Brand Colors - Professional content platform */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 216 19% 16%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 216 19% 16%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 216 19% 16%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary: Deep blue for trust and professionalism */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 217 91% 55%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary: Light blue-gray for subtle elements */
+    --secondary: 214 32% 91%;
+    --secondary-foreground: 216 19% 16%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted: Soft grays for backgrounds */
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent: Purple for highlights and CTAs */
+    --accent: 262 83% 58%;
+    --accent-foreground: 0 0% 100%;
+    --accent-hover: 262 83% 53%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 217 91% 60%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Custom Design Tokens */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 100%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(262 83% 58%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(210 40% 98%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(262 83% 58%) 50%, hsl(199 89% 48%) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(216 19% 16% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(216 19% 16% / 0.1), 0 2px 4px -1px hsl(216 19% 16% / 0.06);
+    --shadow-lg: 0 10px 15px -3px hsl(216 19% 16% / 0.1), 0 4px 6px -2px hsl(216 19% 16% / 0.05);
+    --shadow-xl: 0 20px 25px -5px hsl(216 19% 16% / 0.1), 0 10px 10px -5px hsl(216 19% 16% / 0.04);
+    --shadow-glow: 0 0 30px hsl(217 91% 60% / 0.3);
+
+    /* Typography */
+    --font-heading: 'Inter', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +134,75 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  /* Hero section styles */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+
+  .card-gradient {
+    background: var(--gradient-card);
+  }
+
+  /* Custom animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes glow {
+    from { box-shadow: var(--shadow-lg); }
+    to { box-shadow: var(--shadow-glow); }
+  }
+
+  /* Step indicators */
+  .step-indicator {
+    @apply relative flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground font-semibold transition-all duration-300;
+  }
+
+  .step-indicator.completed {
+    @apply bg-success;
+  }
+
+  .step-indicator.active {
+    @apply ring-4 ring-primary/20 scale-110;
+  }
+
+  /* RSS source type badges */
+  .source-badge {
+    @apply inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium transition-colors;
+  }
+
+  .source-badge.rss {
+    @apply bg-orange-100 text-orange-800;
+  }
+
+  .source-badge.youtube {
+    @apply bg-red-100 text-red-800;
+  }
+
+  .source-badge.newsletter {
+    @apply bg-blue-100 text-blue-800;
+  }
+
+  .source-badge.social {
+    @apply bg-purple-100 text-purple-800;
   }
 }
