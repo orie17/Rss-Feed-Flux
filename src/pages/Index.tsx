@@ -134,7 +134,7 @@ const Index = () => {
                       <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </Button>
-                  <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10">
+                  <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 hover:text-foreground">
                     <BookOpen className="mr-2 w-4 h-4" />
                     Guide Complet
                   </Button>

@@ -52,21 +52,7 @@ const mainNavItems: NavItem[] = [
   { title: "Add Feed", url: "/add-feed", icon: Plus },
 ];
 
-const mockCollections: CollectionItem[] = [
-  {
-    id: "1",
-    name: "Newsfeed",
-    count: 50,
-    expanded: true,
-    feeds: [
-      { id: "1", name: "freeCodeCamp.org News", count: 12 },
-      { id: "2", name: "Youtube_AI", count: 13 },
-      { id: "3", name: "Youtube_AI_DEV", count: 23 },
-      { id: "4", name: "Youtube_History", count: 0 },
-      { id: "5", name: "Youtube_Coding", count: 2 },
-    ],
-  },
-];
+// Remove hardcoded collections - users will create their own
 
 export function AppSidebar() {
   const { state } = useSidebar();
@@ -137,59 +123,10 @@ export function AppSidebar() {
               Collections
             </SidebarGroupLabel>
             <SidebarGroupContent>
-              <SidebarMenu>
-                {mockCollections.map((collection) => {
-                  const isExpanded = expandedCollections.includes(collection.id);
-                  return (
-                    <div key={collection.id}>
-                      <SidebarMenuItem>
-                        <SidebarMenuButton 
-                          onClick={() => toggleCollection(collection.id)}
-                          className="w-full justify-between group"
-                        >
-                          <div className="flex items-center gap-2">
-                            <Rss className="w-4 h-4" />
-                            <span>{collection.name}</span>
-                          </div>
-                          <div className="flex items-center gap-1">
-                            <span className="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded-full">
-                              {collection.count}
-                            </span>
-                            {isExpanded ? (
-                              <ChevronDown className="w-3 h-3" />
-                            ) : (
-                              <ChevronRight className="w-3 h-3" />
-                            )}
-                          </div>
-                        </SidebarMenuButton>
-                      </SidebarMenuItem>
-                      
-                      {isExpanded && collection.feeds && (
-                        <div className="ml-4 space-y-1">
-                          {collection.feeds.map((feed) => (
-                            <SidebarMenuItem key={feed.id}>
-                              <SidebarMenuButton 
-                                asChild
-                                className="text-sm h-8"
-                              >
-                                <NavLink 
-                                  to={`/feed/${feed.id}`}
-                                  className="flex items-center justify-between w-full px-2 py-1 rounded hover:bg-muted/50"
-                                >
-                                  <span className="truncate">{feed.name}</span>
-                                  <span className="text-xs text-muted-foreground ml-2">
-                                    {feed.count}
-                                  </span>
-                                </NavLink>
-                              </SidebarMenuButton>
-                            </SidebarMenuItem>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </SidebarMenu>
+              <div className="px-2 py-4 text-center text-muted-foreground text-sm">
+                <p>No collections yet.</p>
+                <p className="text-xs mt-1">Create your first collection to get started.</p>
+              </div>
             </SidebarGroupContent>
           </SidebarGroup>
         )}
