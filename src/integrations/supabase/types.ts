@@ -180,6 +180,75 @@ export type Database = {
           },
         ]
       }
+      saved_searches: {
+        Row: {
+          created_at: string
+          filters: Json | null
+          id: string
+          query: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          filters?: Json | null
+          id?: string
+          query: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          filters?: Json | null
+          id?: string
+          query?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_settings: {
+        Row: {
+          created_at: string
+          date_format: string
+          enable_right_click: boolean
+          id: string
+          lock_drag_drop: boolean
+          mark_as_read_on_scroll: boolean
+          show_images: boolean
+          timezone: string
+          updated_at: string
+          use_absolute_dates: boolean
+          use_published_dates: boolean
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          date_format?: string
+          enable_right_click?: boolean
+          id?: string
+          lock_drag_drop?: boolean
+          mark_as_read_on_scroll?: boolean
+          show_images?: boolean
+          timezone?: string
+          updated_at?: string
+          use_absolute_dates?: boolean
+          use_published_dates?: boolean
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          date_format?: string
+          enable_right_click?: boolean
+          id?: string
+          lock_drag_drop?: boolean
+          mark_as_read_on_scroll?: boolean
+          show_images?: boolean
+          timezone?: string
+          updated_at?: string
+          use_absolute_dates?: boolean
+          use_published_dates?: boolean
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

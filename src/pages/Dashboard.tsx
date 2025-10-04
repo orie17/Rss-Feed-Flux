@@ -36,6 +36,7 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const [collections, setCollections] = useState<Collection[]>([]);
   const [sources, setSources] = useState<Source[]>([]);
+  const [articleCount, setArticleCount] = useState(0);
   const [loading, setLoading] = useState(true);
   const [showCreateCollection, setShowCreateCollection] = useState(false);
   const [showAddSource, setShowAddSource] = useState(false);
@@ -52,6 +53,7 @@ const Dashboard = () => {
     if (user) {
       fetchCollections();
       fetchSources();
+      fetchArticleCount();
     }
   }, [user]);
 
@@ -99,6 +101,19 @@ const Dashboard = () => {
       });
     } finally {
       setLoading(false);
+    }
+  };
+
+  const fetchArticleCount = async () => {
+    try {
+      const { count, error } = await supabase
+        .from('rss_articles')
+        .select('*', { count: 'exact', head: true });
+
+      if (error) throw error;
+      setArticleCount(count || 0);
+    } catch (error: any) {
+      console.error('Error fetching article count:', error);
     }
   };
 
@@ -201,7 +216,7 @@ const Dashboard = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm text-muted-foreground">Articles</p>
-                  <p className="text-2xl font-bold">-</p>
+                  <p className="text-2xl font-bold">{articleCount}</p>
                 </div>
                 <BarChart3 className="w-8 h-8 text-info" />
               </div>
