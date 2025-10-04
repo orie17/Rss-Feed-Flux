@@ -7,113 +7,74 @@ import { ToolCard } from "@/components/ToolCard";
 import { ArrowRight, BookOpen, Brain, Rss, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-illustration.jpg";
-
 const Index = () => {
-  const step1Details = [
-    "Choisir un outil de MindMapping",
-    "Définir les rubriques de votre magazine idéal",
-    "Lister des mots clés par rubrique pour trouver les sources"
-  ];
-
-  const step2Details = [
-    "Créer un document pour rassembler les URL trouvées",
-    "Classer ces URL selon le type de sources",
-    "Identifier un maximum de types de sources différents"
-  ];
-
-  const step3Details = [
-    "Conversion vers flux RSS avec des agrégateurs",
-    "Filtrer et organiser les sources en dossiers",
-    "Trier et organiser les articles par catégories",
-    "Intégrer des outils IA pour l'automatisation"
-  ];
-
-  const sourceTypes = [
-    {
-      name: "Flux RSS",
-      examples: ["Blogs", "Sites d'actualités", "Flux RSS natifs"],
-      color: "rss" as const
-    },
-    {
-      name: "Vidéos",
-      examples: ["Chaînes YouTube", "DailyMotion", "Vimeo"],
-      color: "youtube" as const
-    },
-    {
-      name: "Newsletters",
-      examples: ["Substack", "Newsletters d'entreprise", "Bulletins"],
-      color: "newsletter" as const
-    },
-    {
-      name: "Réseaux Sociaux",
-      examples: ["Facebook", "Instagram", "Pinterest", "GitHub", "X", "Behance"],
-      color: "social" as const
-    }
-  ];
-
-  const additionalSources = [
-    {
-      name: "Profils Auteurs",
-      examples: ["Reddit", "Medium", "Dev.to"],
-      color: "social" as const
-    },
-    {
-      name: "Groupes",
-      examples: ["Discord", "Facebook Groups", "Slack"],
-      color: "social" as const
-    },
-    {
-      name: "Alertes",
-      examples: ["Google Alerts", "Mention", "Talkwalker"],
-      color: "rss" as const
-    }
-  ];
-
-  const aggregatorTools = [
-    {
-      name: "Feedly",
-      category: "Agrégateur Premium",
-      description: "Plateforme complète avec outils de conversion intégrés",
-      features: ["Interface moderne", "Filtres avancés", "Intégrations nombreuses"],
-      isRecommended: true
-    },
-    {
-      name: "Inoreader",
-      category: "Agrégateur Avancé", 
-      description: "Outil professionnel avec fonctions de conversion",
-      features: ["Conversion intégrée", "Filtres puissants", "API disponible"]
-    },
-    {
-      name: "FreshRSS",
-      category: "Self-hosted",
-      description: "Solution open-source auto-hébergée",
-      features: ["Gratuit", "Contrôle total", "Extensible"]
-    }
-  ];
-
-  const conversionTools = [
-    {
-      name: "RSS.app",
-      category: "Conversion",
-      description: "Convertit n'importe quelle source en flux RSS",
-      features: ["Réseaux sociaux", "Sites web", "Newsletters"]
-    },
-    {
-      name: "Kill the Newsletter",
-      category: "Newsletter to RSS",
-      description: "Transforme les newsletters en flux RSS",
-      features: ["Simple d'usage", "Gratuit", "Fiable"]
-    },
-    {
-      name: "Zapier RSS",
-      category: "Automation",
-      description: "Automatise la création de flux RSS",
-      features: ["Intégrations multiples", "Workflows", "Triggers"]
-    }
-  ];
-
-  return (
-    <div className="min-h-screen bg-background">
+  const step1Details = ["Choisir un outil de MindMapping", "Définir les rubriques de votre magazine idéal", "Lister des mots clés par rubrique pour trouver les sources"];
+  const step2Details = ["Créer un document pour rassembler les URL trouvées", "Classer ces URL selon le type de sources", "Identifier un maximum de types de sources différents"];
+  const step3Details = ["Conversion vers flux RSS avec des agrégateurs", "Filtrer et organiser les sources en dossiers", "Trier et organiser les articles par catégories", "Intégrer des outils IA pour l'automatisation"];
+  const sourceTypes = [{
+    name: "Flux RSS",
+    examples: ["Blogs", "Sites d'actualités", "Flux RSS natifs"],
+    color: "rss" as const
+  }, {
+    name: "Vidéos",
+    examples: ["Chaînes YouTube", "DailyMotion", "Vimeo"],
+    color: "youtube" as const
+  }, {
+    name: "Newsletters",
+    examples: ["Substack", "Newsletters d'entreprise", "Bulletins"],
+    color: "newsletter" as const
+  }, {
+    name: "Réseaux Sociaux",
+    examples: ["Facebook", "Instagram", "Pinterest", "GitHub", "X", "Behance"],
+    color: "social" as const
+  }];
+  const additionalSources = [{
+    name: "Profils Auteurs",
+    examples: ["Reddit", "Medium", "Dev.to"],
+    color: "social" as const
+  }, {
+    name: "Groupes",
+    examples: ["Discord", "Facebook Groups", "Slack"],
+    color: "social" as const
+  }, {
+    name: "Alertes",
+    examples: ["Google Alerts", "Mention", "Talkwalker"],
+    color: "rss" as const
+  }];
+  const aggregatorTools = [{
+    name: "Feedly",
+    category: "Agrégateur Premium",
+    description: "Plateforme complète avec outils de conversion intégrés",
+    features: ["Interface moderne", "Filtres avancés", "Intégrations nombreuses"],
+    isRecommended: true
+  }, {
+    name: "Inoreader",
+    category: "Agrégateur Avancé",
+    description: "Outil professionnel avec fonctions de conversion",
+    features: ["Conversion intégrée", "Filtres puissants", "API disponible"]
+  }, {
+    name: "FreshRSS",
+    category: "Self-hosted",
+    description: "Solution open-source auto-hébergée",
+    features: ["Gratuit", "Contrôle total", "Extensible"]
+  }];
+  const conversionTools = [{
+    name: "RSS.app",
+    category: "Conversion",
+    description: "Convertit n'importe quelle source en flux RSS",
+    features: ["Réseaux sociaux", "Sites web", "Newsletters"]
+  }, {
+    name: "Kill the Newsletter",
+    category: "Newsletter to RSS",
+    description: "Transforme les newsletters en flux RSS",
+    features: ["Simple d'usage", "Gratuit", "Fiable"]
+  }, {
+    name: "Zapier RSS",
+    category: "Automation",
+    description: "Automatise la création de flux RSS",
+    features: ["Intégrations multiples", "Workflows", "Triggers"]
+  }];
+  return <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="hero-gradient">
@@ -134,7 +95,7 @@ const Index = () => {
                       <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </Button>
-                  <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 hover:text-foreground">
+                  <Button size="lg" variant="outline" className="border-white/20 bg-red-500 hover:bg-red-400 text-slate-50">
                     <BookOpen className="mr-2 w-4 h-4" />
                     Guide Complet
                   </Button>
@@ -142,11 +103,7 @@ const Index = () => {
               </div>
               
               <div className="relative">
-                <img 
-                  src={heroImage} 
-                  alt="RSS Aggregation Platform"
-                  className="w-full h-auto rounded-2xl shadow-2xl animate-float"
-                />
+                <img src={heroImage} alt="RSS Aggregation Platform" className="w-full h-auto rounded-2xl shadow-2xl animate-float" />
               </div>
             </div>
           </div>
@@ -170,27 +127,11 @@ const Index = () => {
         </div>
 
         <div className="grid gap-8 max-w-4xl mx-auto">
-          <StepCard
-            step={1}
-            title="Définir Vos Objectifs"
-            description="Établissez une base solide pour votre magazine avec des objectifs clairs et des rubriques bien définies."
-            details={step1Details}
-            isActive={true}
-          />
+          <StepCard step={1} title="Définir Vos Objectifs" description="Établissez une base solide pour votre magazine avec des objectifs clairs et des rubriques bien définies." details={step1Details} isActive={true} />
           
-          <StepCard
-            step={2}
-            title="Collecter Les Sources"
-            description="Rassemblez et classifiez toutes vos sources d'information selon leur type et leur pertinence."
-            details={step2Details}
-          />
+          <StepCard step={2} title="Collecter Les Sources" description="Rassemblez et classifiez toutes vos sources d'information selon leur type et leur pertinence." details={step2Details} />
           
-          <StepCard
-            step={3}
-            title="Organiser et Automatiser"
-            description="Mettez en place un système automatisé de filtrage, tri et organisation de vos contenus."
-            details={step3Details}
-          />
+          <StepCard step={3} title="Organiser et Automatiser" description="Mettez en place un système automatisé de filtrage, tri et organisation de vos contenus." details={step3Details} />
         </div>
       </section>
 
@@ -207,14 +148,8 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <SourceTypeCard
-              title="Sources Principales"
-              sourceTypes={sourceTypes}
-            />
-            <SourceTypeCard
-              title="Sources Avancées"
-              sourceTypes={additionalSources}
-            />
+            <SourceTypeCard title="Sources Principales" sourceTypes={sourceTypes} />
+            <SourceTypeCard title="Sources Avancées" sourceTypes={additionalSources} />
           </div>
         </div>
       </section>
@@ -231,14 +166,8 @@ const Index = () => {
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          <ToolCard
-            title="Agrégateurs RSS"
-            tools={aggregatorTools}
-          />
-          <ToolCard
-            title="Outils de Conversion"
-            tools={conversionTools}
-          />
+          <ToolCard title="Agrégateurs RSS" tools={aggregatorTools} />
+          <ToolCard title="Outils de Conversion" tools={conversionTools} />
           <Card className="p-6 bg-gradient-to-br from-accent/10 to-primary/10 border-accent/20">
             <div className="text-center">
               <Brain className="w-12 h-12 text-accent mx-auto mb-4" />
@@ -286,8 +215,6 @@ const Index = () => {
           </Button>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
