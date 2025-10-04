@@ -126,7 +126,7 @@ const Index = () => {
           </p>
         </div>
 
-        <div className="grid gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           <StepCard step={1} title="Définir Vos Objectifs" description="Établissez une base solide pour votre magazine avec des objectifs clairs et des rubriques bien définies." details={step1Details} isActive={true} />
           
           <StepCard step={2} title="Collecter Les Sources" description="Rassemblez et classifiez toutes vos sources d'information selon leur type et leur pertinence." details={step2Details} />
